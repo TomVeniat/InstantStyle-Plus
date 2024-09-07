@@ -35,6 +35,13 @@ huggingface-cli download --resume-download xinsir/controlnet-tile-sdxl-1.0 --loc
 
 # follow https://github.com/haofanwang/CSD_Score?tab=readme-ov-file#download to download CSD models
 git clone https://github.com/haofanwang/CSD_Score
+
+# Get the model from Civitai
+wget -O sdxlUnstableDiffusers_v8HeavensWrathVAE.safetensors https://civitai.com/api/download/models/196039?type=Model&format=SafeTensor&size=full&fp=fp16
+# Convert it to diffusers format using [this script](https://github.com/huggingface/diffusers/blob/main/scripts/convert_original_stable_diffusion_to_diffusers.py) from diffuesrs
+python convert_original_stable_diffusion_to_diffusers.py --checkpoint_path <path to sdxlUnstableDiffusers_v8HeavensWrathVAE.safetensors --dump_path <path to InstantStyle-plus>/checkpoints/sdxlUnstableDiffusers_v8HeavensWrathVAE --from_safetensors
+
+
 ```
 
 Set [HF_ENDPOINT](https://hf-mirror.com/) in case you cannot access HuggingFace.
